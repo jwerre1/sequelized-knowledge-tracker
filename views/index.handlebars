@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row text-center mb-2">
+        <h1 class="mx-auto">Coding Knowledge Tracker</h1>
+    </div>
+    <div class="row text-center mb-3">
+        <h5 class="mx-auto">Keep track of what topics have been mastered and what ones need work.</h5>
+            <h5 class="mx-auto">To add a topic that needs work, simply type it into the box below and click "Add". This will create a button in the appropriate column. Once that topic has been mastered, click on the applicable button to toggle over to the "Known" category.</h5>
+    <h5 class="mx-auto">If you discover later that you did not know a topic as well as you thought you did: no worries! Simply click on it again and it will toggle back to the "Needs Work" category.</h5>
+    </div>
+
+    <div class="row">
+        {{!-- Needs work --}}
+        <div class="col-md-5">
+            <h2>Needs Work:</h2>
+
+            <ul>
+                {{#each knowledge}}
+                {{#unless known}}
+                {{!-- Sets data-known to true, so that it knows to change to false when clicked --}}
+                {{> knowledge/knowledge-block known=true}}
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+
+        <div class="col-md-2">
+        </div>
+
+        {{!-- mastered --}}
+        <div class="col-md-5">
+            <h2>Known:
+            </h2>
+
+            <ul>
+                {{#each knowledge}}
+                {{#if known}}
+                {{!-- Sets data-known to false, so that it knows to change to false when clicked --}}
+                {{> knowledge/knowledge-block known=false}}
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        {{!-- form --}}
+        <div class="col-md-6">
+            {{!-- <h2>Add a Topic</h2> --}}
+            <form class="create-form">
+
+                <div class="form-row">
+                    <label for="topic" class="h2 text-center mx-auto">Add a Topic: </label>
+                    <input type="text" class="form-text mx-auto mb-2" id="topic" name="name" required>
+                </div>
+
+                <button type="submit" class="btn btn-danger btn-lg">Add</button>
+            </form>
+        </div>
+        <div class="col-md-3">
+        </div>
+
+
+    </div>
+</div>
