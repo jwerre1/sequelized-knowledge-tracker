@@ -4,10 +4,10 @@ $(function() {
         // Grabs values created in knowledge-block.handlebars
         var id = $(this).data("id");
         var newknown = $(this).data("newknown");
-
         var newknownstate = {
             known: newknown
         };
+        console.log(newknownstate);
 
         $.ajax("/api/knowledge/" + id, {
             type: "PUT",
